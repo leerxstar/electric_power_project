@@ -1,0 +1,10 @@
+Best k by silhouette score: 2
+Silhouette scores by k:
+k=2: 0.2035
+k=3: 0.1131
+k=4: 0.1139
+k=5: 0.1030
+k=6: 0.1239
+k=7: 0.1207
+k=8: 0.1121
+k=9: 0.1147
