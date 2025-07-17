@@ -1,0 +1,47 @@
+# ---- Python Environment ----
+python==3.10
+
+# ---- Data Processing ----
+pandas==2.2.2
+numpy==1.26.4
+pyarrow==15.0.2
+
+# ---- Machine Learning ----
+scikit-learn==1.4.2
+xgboost==2.0.3
+tensorflow==2.15.0
+statsmodels==0.14.2
+
+# ---- Distributed Computing ----
+pyspark==3.1.1
+# External requirement: Spark 3.1.1 with Hadoop 2.7 must be installed manually (see below)
+
+# ---- Visualization ----
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# ---- Dimensionality Reduction ----
+umap-learn==0.5.6
+# t-SNE is included in scikit-learn
+
+# ---- Model Interpretation ----
+shap==0.45.0
+
+# ---- Jupyter Notebook Environment ----
+jupyterlab==4.1.5
+ipykernel==6.29.4
+
+# ---- External Tools (Must be installed manually) ----
+# Spark 3.1.1 with Hadoop 2.7:
+# Download from: https://archive.apache.org/dist/spark/spark-3.1.1/
+# Extract and set SPARK_HOME and PATH variables:
+# export SPARK_HOME=~/spark-3.1.1-bin-hadoop2.7
+# export PATH=$SPARK_HOME/bin:$PATH
+
+# Java (OpenJDK 17 for Spark compatibility):
+# Install via Homebrew (macOS):
+# brew install openjdk@17
+# Then link it to your environment:
+# sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+# export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+# export CPPFLAGS="-I/opt/homebrew/opt/openjdk@17/include"
