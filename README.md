@@ -1,37 +1,82 @@
-# Electric Power Project 🔌⚡
+# ⚡ Electric Power Consumption Forecasting & Pattern Mining
 
-This repository contains a comprehensive data science pipeline for analyzing and forecasting household electricity consumption using both **supervised learning** and **unsupervised clustering techniques**. It was developed as a combined **Course Project** and **Project Work** for the Big Data Analytics and Text Mining course.
+## 📂 Dataset: Individual Household Electric Power Consumption  
+**Link**: [UCI Repository](https://archive.ics.uci.edu/ml/datasets/individual+household+electric+power+consumption)
 
-## 🔍 Project Overview
+This dataset records minute-level electricity usage from a single household over nearly four years (Dec 2006 – Nov 2010). After preprocessing and aggregation to daily granularity, the final dataset includes:
 
-The project consists of two integrated parts:
+- ~2,075,259 total observations  
+- 9 continuous numeric features (voltage, active/reactive power, sub-metering, etc.)
+- Derived temporal & statistical features for modeling and clustering  
+- ≈ 18 million total data points (N × p)
 
-### 1. Course Project – Supervised Forecasting
-We predict the **average electricity consumption for the next 3 days** using historical data and engineered features.
+---
 
-**Algorithms used:**
-- Random Forest
-- Gradient Boosted Trees (GBT)
-- Multilayer Perceptron (Keras)
-- XGBoost
-- LSTM with Time2Vec (Keras)
+## 🚀 Project Overview
 
-**Highlights:**
-- 📈 After feature engineering (v3), XGBoost and MLP achieved **R² > 0.997** and **RMSE < 26 Wh**, indicating highly accurate short-term forecasts.
-- LSTM with a Time2Vec-enhanced BiLSTM architecture also produced competitive performance.
+This unified project integrates **two major components**:
+- **Course Project**: Supervised electricity demand forecasting and anomaly-aware model refinement  
+- **Project Work**: Unsupervised pattern discovery and cluster-specific forecasting with explainable modeling
 
-### 2. Project Work – Clustering and Cluster-Specific Forecasting
-We applied unsupervised clustering to reveal different consumption behavior patterns and built customized prediction models for each group.
+### 🎯 Key Goals:
+- Predict 3-day average electricity consumption from historical trends  
+- Identify usage behavior patterns using clustering + dimensionality reduction  
+- Build interpretable, cluster-aware predictive models using SHAP  
 
-**Techniques used:**
-- KMeans and Hierarchical Clustering
-- Dimensionality reduction with UMAP & t-SNE
-- Per-cluster XGBoost regressors
-- SHAP for model interpretability
+---
 
-**Results:**
-- Cluster-wise models achieved **R² > 0.993** in all segments.
-- Cluster-specific SHAP analysis revealed key drivers of consumption behavior (e.g., rolling statistics, lag features, voltage trends).
+## 🔧 Technical Summary
+
+| Task                        | Methodologies Used                                                                 |
+|-----------------------------|------------------------------------------------------------------------------------|
+| Supervised Regression       | Random Forest, GBT, MLP (Keras), LSTM, XGBoost                                    |
+| Unsupervised Clustering     | KMeans, Agglomerative Clustering                                                  |
+| Dimensionality Reduction    | UMAP, t-SNE                                                                       |
+| Anomaly Detection           | Z-Score, Isolation Forest                                                         |
+| Time Series Decomposition   | Seasonal-Trend Analysis (weekly)                                                 |
+| Explainability              | SHAP (per-cluster)                                                                |
+
+---
+
+## 📈 Project Highlights
+
+### ✅ Best Model Performance (Global)
+Using enhanced time-series features & anomaly filtering:
+
+| Model      | RMSE    | MAE     | R²     | NRMSE  |
+|------------|---------|---------|--------|--------|
+| **MLP**    | 23.02   | 15.77   | 0.9979 | 0.0082 |
+| **XGBoost**| 25.26   | 14.21   | 0.9974 | 0.0090 |
+
+### 🧠 Cluster-Specific Modeling (XGBoost Per Cluster)
+By segmenting data into behavior-based clusters and training separate models:
+
+- Cluster 0: R² = 0.995, NRMSE = 0.0149  
+- Cluster 1: R² = 0.993, NRMSE = 0.0164  
+
+**Result**: Improved interpretability and local accuracy over global models.
+
+### 🔍 Feature Importance Analysis
+SHAP analysis provided interpretable insights into dominant predictors per cluster—e.g., previous-day consumption, rolling means, and voltage-related metrics—revealing behavioral distinctions across user segments.
+
+---
+
+## 🧪 Technical Stack
+
+Details in the requirements.txt
+
+- **Language**: Python (3.10)  
+- **Environment**: Conda (`bigdata_project`), Jupyter Notebook  
+- **Cluster**: Local Spark 3.1.1 (Hadoop 2.7) with OpenJDK 17  
+- **ML Libraries**: scikit-learn, XGBoost, TensorFlow (Keras), PySpark MLlib  
+- **EDA & Viz**: matplotlib, seaborn  
+- **Model Interpretation**: SHAP  
+- **Dimensionality Reduction**: UMAP, t-SNE  
+- **Time Series Tools**: statsmodels, pandas  
+
+
+
+
 
 
 
